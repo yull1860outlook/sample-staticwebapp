@@ -1,7 +1,15 @@
-import React from 'react';
+import React  , { useState, useEffect } from 'react';
 
-const About = () => (
-  <div className="content-container">
+const About = () => {
+  const [data, setData] = useState('');
+  useEffect(() => {
+    (async function () {
+      const  text = await fetch(`/api/data`);
+      setData(text);
+    })();
+  });
+
+  return  <div className="content-container">
     <div className="content-title-group not-found">
       <h2 className="title">Product Wish List</h2>
       <p>
@@ -16,9 +24,9 @@ const About = () => (
             Code in GitHub
           </a>
         </li>
-      </ul>
+      </ul>{data}
     </div>
-  </div>
-);
+  </div>;
+}
 
 export default About;
