@@ -5,7 +5,7 @@ const About = () => {
   const [data, setData] = useState('');
   useEffect(() => {
     (async function () {
-      const  text = await fetch(`/api/data`);
+      const  text = await fetch(`/api/getname`);
       setData(text);
     })();
   });
